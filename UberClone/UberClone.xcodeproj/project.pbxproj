@@ -11,6 +11,7 @@
 		4601C30727F5ED860024AB8F /* car.json in Resources */ = {isa = PBXBuildFile; fileRef = 4601C30627F5ED850024AB8F /* car.json */; };
 		4601C30D27F60F260024AB8F /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601C30C27F60F260024AB8F /* IntroViewController.swift */; };
 		4646389D27FB200D003E1D65 /* MainTravelerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646389C27FB200D003E1D65 /* MainTravelerViewController.swift */; };
+		4646389F27FB5FB2003E1D65 /* DriverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646389E27FB5FB2003E1D65 /* DriverTableViewController.swift */; };
 		46B46A4D27F4C0D6008A3842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B46A4C27F4C0D6008A3842 /* AppDelegate.swift */; };
 		46B46A4F27F4C0D6008A3842 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B46A4E27F4C0D6008A3842 /* SceneDelegate.swift */; };
 		46B46A5127F4C0D6008A3842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B46A5027F4C0D6008A3842 /* ViewController.swift */; };
@@ -21,6 +22,8 @@
 		46B6BA8027F76EA100853B16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6BA7F27F76EA100853B16 /* LoginViewController.swift */; };
 		46B6BA8327F7815D00853B16 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6BA8227F7815D00853B16 /* AnimationViewController.swift */; };
 		46B6BA8627F7934C00853B16 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6BA8527F7934B00853B16 /* Alert.swift */; };
+		46EF637727FDC0C800193608 /* AcceptRaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF637627FDC0C800193608 /* AcceptRaceViewController.swift */; };
+		46EF637927FE018200193608 /* LocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF637827FE018200193608 /* LocalViewController.swift */; };
 		6225AC3200C08EC4716131D6 /* Pods_UberClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDBBA08A94B507243C99B6B /* Pods_UberClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +33,7 @@
 		4601C30627F5ED850024AB8F /* car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car.json; sourceTree = "<group>"; };
 		4601C30C27F60F260024AB8F /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		4646389C27FB200D003E1D65 /* MainTravelerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTravelerViewController.swift; sourceTree = "<group>"; };
+		4646389E27FB5FB2003E1D65 /* DriverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTableViewController.swift; sourceTree = "<group>"; };
 		46B46A4927F4C0D6008A3842 /* UberClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B46A4C27F4C0D6008A3842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46B46A4E27F4C0D6008A3842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +46,8 @@
 		46B6BA7F27F76EA100853B16 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		46B6BA8227F7815D00853B16 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		46B6BA8527F7934B00853B16 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		46EF637627FDC0C800193608 /* AcceptRaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRaceViewController.swift; sourceTree = "<group>"; };
+		46EF637827FE018200193608 /* LocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalViewController.swift; sourceTree = "<group>"; };
 		6CDBBA08A94B507243C99B6B /* Pods_UberClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UberClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97CB8BA6290065DCA4946D32 /* Pods-UberClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberClone.release.xcconfig"; path = "Target Support Files/Pods-UberClone/Pods-UberClone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,9 +90,9 @@
 				46B46A4C27F4C0D6008A3842 /* AppDelegate.swift */,
 				46B46A4E27F4C0D6008A3842 /* SceneDelegate.swift */,
 				46B46A5227F4C0D6008A3842 /* Main.storyboard */,
-				46B46A5527F4C0D8008A3842 /* Assets.xcassets */,
 				4601C30627F5ED850024AB8F /* car.json */,
 				46B46A5727F4C0D8008A3842 /* LaunchScreen.storyboard */,
+				46B46A5527F4C0D8008A3842 /* Assets.xcassets */,
 				46B46A5A27F4C0D8008A3842 /* Info.plist */,
 				4601C30327F5D9820024AB8F /* GoogleService-Info.plist */,
 			);
@@ -102,6 +108,9 @@
 				46B6BA7F27F76EA100853B16 /* LoginViewController.swift */,
 				46B6BA8227F7815D00853B16 /* AnimationViewController.swift */,
 				4646389C27FB200D003E1D65 /* MainTravelerViewController.swift */,
+				4646389E27FB5FB2003E1D65 /* DriverTableViewController.swift */,
+				46EF637627FDC0C800193608 /* AcceptRaceViewController.swift */,
+				46EF637827FE018200193608 /* LocalViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -254,7 +263,10 @@
 				46B46A4D27F4C0D6008A3842 /* AppDelegate.swift in Sources */,
 				46B6BA7E27F76E7D00853B16 /* SignerViewController.swift in Sources */,
 				46B46A4F27F4C0D6008A3842 /* SceneDelegate.swift in Sources */,
+				46EF637927FE018200193608 /* LocalViewController.swift in Sources */,
 				4646389D27FB200D003E1D65 /* MainTravelerViewController.swift in Sources */,
+				46EF637727FDC0C800193608 /* AcceptRaceViewController.swift in Sources */,
+				4646389F27FB5FB2003E1D65 /* DriverTableViewController.swift in Sources */,
 				46B6BA8627F7934C00853B16 /* Alert.swift in Sources */,
 				4601C30D27F60F260024AB8F /* IntroViewController.swift in Sources */,
 			);

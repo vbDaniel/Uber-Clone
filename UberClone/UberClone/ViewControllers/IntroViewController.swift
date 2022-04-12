@@ -17,13 +17,30 @@ class IntroViewController: UIViewController {
         super.viewDidLoad()
        
         let auth = Auth.auth()
+    
         
         auth.addStateDidChangeListener { (auth, user) in
             if user != nil{
-                self.performSegue(withIdentifier: "introToMain", sender: nil)
+                
+                let database = Database.database().reference()
+                let userID = database.child("Users").child(user!.uid)
+                userID.observeSingleEvent(of: .value) { (snapshot) in
+                    let data = snapshot.value as? NSDictionary
+                    if data != nil{
+                        let userType = data?["userType"] as? String
+                        if userType == "Passageiro"{
+                            self.performSegue(withIdentifier: "introToMain", sender: nil)
+                        }else{
+                            self.performSegue(withIdentifier: "introToMainAsDriver", sender: nil)
+                        }
+                    }else{
+                        print("Erro ao buscar cadastro!!!")
+                    }
+                    
+                }
+                
             }else{
-                let alert =  Alert(title: "Erro ai autenticar login", message: "Entre novamente!!!")
-                self.present(alert.getAlert(), animated: true, completion: nil)
+                print("Algum erro ao logar ou o usuario deu signOut")
             }
         }
     }
@@ -36,9 +53,11 @@ class IntroViewController: UIViewController {
     
 
     @IBAction func loginButton(_ sender: Any) {
+        
     }
     
     @IBAction func register(_ sender: Any) {
+        
     }
     
 }

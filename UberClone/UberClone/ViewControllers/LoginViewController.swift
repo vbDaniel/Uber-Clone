@@ -46,12 +46,12 @@ class LoginViewController: UIViewController {
                     auth.signIn(withEmail: email, password: password) { (user, erro) in
                         if erro == nil{
                             print("Sucessoooo!!! ao  logar user!!!")
-                            if user != nil{
-                                self.performSegue(withIdentifier: "loginToMain", sender: nil)
-                                
-                            }else{
+                            if user == nil{
                                 let alert =  Alert(title: "Erro ai autenticar usuário", message: "Confira os dados e tente novamente!")
                                 self.present(alert.getAlert(), animated: true, completion: nil)
+                                
+                            }else{
+                                
                             }
                             
                             
