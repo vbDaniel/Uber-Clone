@@ -14,7 +14,6 @@
 		4646389F27FB5FB2003E1D65 /* DriverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646389E27FB5FB2003E1D65 /* DriverTableViewController.swift */; };
 		46B46A4D27F4C0D6008A3842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B46A4C27F4C0D6008A3842 /* AppDelegate.swift */; };
 		46B46A4F27F4C0D6008A3842 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B46A4E27F4C0D6008A3842 /* SceneDelegate.swift */; };
-		46B46A5127F4C0D6008A3842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B46A5027F4C0D6008A3842 /* ViewController.swift */; };
 		46B46A5427F4C0D6008A3842 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46B46A5227F4C0D6008A3842 /* Main.storyboard */; };
 		46B46A5627F4C0D8008A3842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46B46A5527F4C0D8008A3842 /* Assets.xcassets */; };
 		46B46A5927F4C0D8008A3842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46B46A5727F4C0D8008A3842 /* LaunchScreen.storyboard */; };
@@ -22,6 +21,8 @@
 		46B6BA8027F76EA100853B16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6BA7F27F76EA100853B16 /* LoginViewController.swift */; };
 		46B6BA8327F7815D00853B16 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6BA8227F7815D00853B16 /* AnimationViewController.swift */; };
 		46B6BA8627F7934C00853B16 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B6BA8527F7934B00853B16 /* Alert.swift */; };
+		46BA80BF2808DFBB004146BB /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA80BE2808DFBB004146BB /* NoteViewController.swift */; };
+		46C9B88A2808616C009C9A68 /* statusRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9B8892808616C009C9A68 /* statusRun.swift */; };
 		46EF637727FDC0C800193608 /* AcceptRaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF637627FDC0C800193608 /* AcceptRaceViewController.swift */; };
 		46EF637927FE018200193608 /* LocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EF637827FE018200193608 /* LocalViewController.swift */; };
 		6225AC3200C08EC4716131D6 /* Pods_UberClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDBBA08A94B507243C99B6B /* Pods_UberClone.framework */; };
@@ -37,7 +38,6 @@
 		46B46A4927F4C0D6008A3842 /* UberClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B46A4C27F4C0D6008A3842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46B46A4E27F4C0D6008A3842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		46B46A5027F4C0D6008A3842 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		46B46A5327F4C0D6008A3842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		46B46A5527F4C0D8008A3842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46B46A5827F4C0D8008A3842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,6 +46,8 @@
 		46B6BA7F27F76EA100853B16 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		46B6BA8227F7815D00853B16 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		46B6BA8527F7934B00853B16 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		46BA80BE2808DFBB004146BB /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		46C9B8892808616C009C9A68 /* statusRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statusRun.swift; sourceTree = "<group>"; };
 		46EF637627FDC0C800193608 /* AcceptRaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRaceViewController.swift; sourceTree = "<group>"; };
 		46EF637827FE018200193608 /* LocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalViewController.swift; sourceTree = "<group>"; };
 		6CDBBA08A94B507243C99B6B /* Pods_UberClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UberClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 		46B46A4B27F4C0D6008A3842 /* UberClone */ = {
 			isa = PBXGroup;
 			children = (
+				46C9B8882808614D009C9A68 /* Enums */,
 				46B6BA8427F7933500853B16 /* Model */,
 				46B6BA8127F774C900853B16 /* ViewControllers */,
 				46B46A4C27F4C0D6008A3842 /* AppDelegate.swift */,
@@ -102,7 +105,6 @@
 		46B6BA8127F774C900853B16 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				46B46A5027F4C0D6008A3842 /* ViewController.swift */,
 				4601C30C27F60F260024AB8F /* IntroViewController.swift */,
 				46B6BA7D27F76E7D00853B16 /* SignerViewController.swift */,
 				46B6BA7F27F76EA100853B16 /* LoginViewController.swift */,
@@ -111,6 +113,7 @@
 				4646389E27FB5FB2003E1D65 /* DriverTableViewController.swift */,
 				46EF637627FDC0C800193608 /* AcceptRaceViewController.swift */,
 				46EF637827FE018200193608 /* LocalViewController.swift */,
+				46BA80BE2808DFBB004146BB /* NoteViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -121,6 +124,14 @@
 				46B6BA8527F7934B00853B16 /* Alert.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		46C9B8882808614D009C9A68 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				46C9B8892808616C009C9A68 /* statusRun.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		A20864CFAF61AE95FB7729DA /* Frameworks */ = {
@@ -258,13 +269,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				46B6BA8027F76EA100853B16 /* LoginViewController.swift in Sources */,
-				46B46A5127F4C0D6008A3842 /* ViewController.swift in Sources */,
 				46B6BA8327F7815D00853B16 /* AnimationViewController.swift in Sources */,
 				46B46A4D27F4C0D6008A3842 /* AppDelegate.swift in Sources */,
+				46C9B88A2808616C009C9A68 /* statusRun.swift in Sources */,
 				46B6BA7E27F76E7D00853B16 /* SignerViewController.swift in Sources */,
 				46B46A4F27F4C0D6008A3842 /* SceneDelegate.swift in Sources */,
 				46EF637927FE018200193608 /* LocalViewController.swift in Sources */,
 				4646389D27FB200D003E1D65 /* MainTravelerViewController.swift in Sources */,
+				46BA80BF2808DFBB004146BB /* NoteViewController.swift in Sources */,
 				46EF637727FDC0C800193608 /* AcceptRaceViewController.swift in Sources */,
 				4646389F27FB5FB2003E1D65 /* DriverTableViewController.swift in Sources */,
 				46B6BA8627F7934C00853B16 /* Alert.swift in Sources */,

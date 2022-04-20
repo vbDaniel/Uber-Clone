@@ -53,17 +53,31 @@ class MainTravelerViewController: UIViewController, MKMapViewDelegate, CLLocatio
             //add observador se quando o motorista aceita a corrida
             request.observe(.childChanged) { (snapshot) in
                 if let data = snapshot.value as? [String : Any]{
-                    if let latDriver = data["driverLatitude"]{
-                        if let longDriver = data["driverLongitude"]{
-                            print("TESTE")
-                            self.driverLocation = CLLocationCoordinate2D(latitude: latDriver as! CLLocationDegrees, longitude: longDriver as! CLLocationDegrees)
-                            self.showDriverAndPassenger()
+                   
+                    if let status = data["status"] as? String{
+                        if status == StatusRun.pickUpPassenger.rawValue{
+                            if let latDriver = data["driverLatitude"]{
+                                if let longDriver = data["driverLongitude"]{
+                                    
+                                    self.driverLocation = CLLocationCoordinate2D(latitude: latDriver as! CLLocationDegrees, longitude: longDriver as! CLLocationDegrees)
+                                    self.showDriverAndPassenger()
+                                }
+                            }
+                        }else if (status == StatusRun.InRun.rawValue){
+                            self.swichButtonToInRun()
+                            self.userLocation = self.driverLocation
+                        }else if (status == StatusRun.FinishedRun.rawValue){
+                            if let price = data["runPrice"] as? Double{
+                                self.swichButtonToFinished(price: price)
+                            }
                         }
                     }
                 }
             }
             
         }
+        
+     
     }
     
     func showDriverAndPassenger(){
@@ -74,10 +88,17 @@ class MainTravelerViewController: UIViewController, MKMapViewDelegate, CLLocatio
         let driverCLLocation = CLLocation(latitude: self.driverLocation.latitude, longitude: self.driverLocation.longitude)
         let passengerCLLocation = CLLocation(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
         
+        var message = ""
+        
         let distance = driverCLLocation.distance(from: passengerCLLocation) // em metros
         let distanceKM = distance/1000
+        if distanceKM < 1{
+            message = "Motorista a \(round(distance)) metros de distância"
+        }else{
+            message = "Motorista a \(round(distanceKM)) KM de distância"
+        }
         
-        self.callUberReference.setTitle("Motorista a \(round(distanceKM)) KM de distância", for: .normal)
+        self.callUberReference.setTitle(message, for: .normal)
         self.callUberReference.backgroundColor = UIColor(red: 0.902, green: 0.906, blue: 0.906, alpha: 1)
         self.callUberReference.isEnabled = false
         
@@ -87,16 +108,14 @@ class MainTravelerViewController: UIViewController, MKMapViewDelegate, CLLocatio
         
         
         //fazer a diferença das latitudes e long para que assim apareça ambas o motorista e passageiro
-        // abs() entrega sempre um valor possitivo
-        //        let latDiference = (abs(self.userLocation.latitude) - abs(self.driverLocation.latitude)) * 3000
-        //        let longDiference = (abs(self.userLocation.longitude) - abs(self.driverLocation.longitude)) * 3000
-        //    print("\(latDiference) e  \(longDiference)  = \(longDiference * 3000)")
+        //abs() entrega sempre um valor possitivo
         
+        let latDiferenca = abs(self.userLocation.latitude - self.driverLocation.latitude) * 300000
+        let lonDiferenca = abs(self.userLocation.longitude - self.driverLocation.longitude) * 300000
         
-        //Aqui é onde vai ficar centralizado a tela do mapa
-        let region = MKCoordinateRegion(center: self.userLocation, latitudinalMeters: 3000, longitudinalMeters: 3500)
+        //  let region = MKCoordinateRegion(center: launchLocal, latitudinalMeters: 2000, longitudinalMeters: 2000)
+        let region = MKCoordinateRegion.init( center: self.userLocation, latitudinalMeters: latDiferenca, longitudinalMeters: lonDiferenca)
         self.map.setRegion(region, animated: true)
-        
         
         
         
@@ -105,7 +124,6 @@ class MainTravelerViewController: UIViewController, MKMapViewDelegate, CLLocatio
         let driverNote = MKPointAnnotation()
         driverNote.coordinate = self.driverLocation
         driverNote.title = "Motorista"
-        
         self.map.addAnnotation(driverNote)
         
         
@@ -117,6 +135,44 @@ class MainTravelerViewController: UIViewController, MKMapViewDelegate, CLLocatio
         self.map.addAnnotation(passengerNote)
         
     }
+    ///
+    ///aaa
+    ///
+    ///
+    ///a
+    ///
+    ///
+    ///aaaa
+    ///
+    ///aaa manoooo né possivel
+    ///
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let noteView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        
+        
+        let noteLocation = annotation.coordinate
+        if noteLocation.latitude == self.userLocation.latitude{
+            if noteLocation.longitude == self.userLocation.longitude{
+        
+                noteView.image = UIImage(named: "points")
+            
+            }
+        }else{
+            noteView.image = UIImage(named: "upCar")
+        }
+        
+           
+        
+        var frame = noteView.frame
+        frame.size.height = 50
+        frame.size.width = 50
+        
+        noteView.frame = frame
+        
+        
+        return noteView
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -124,24 +180,20 @@ class MainTravelerViewController: UIViewController, MKMapViewDelegate, CLLocatio
         
         if let coordinate = manager.location?.coordinate{
             
+            self.userLocation = coordinate
             
             if self.ubercalled {
                 showDriverAndPassenger()
             }else{
-                self.userLocation = coordinate
-                
                 let region = MKCoordinateRegion.init(center: coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
                 self.map.setRegion(region, animated: true)
                 
                 self.map.removeAnnotations(map.annotations)//remove notes anteriores
                 
+                
                 let passengerNote = MKPointAnnotation()
                 passengerNote.coordinate = coordinate
                 passengerNote.title = "Seu local"
-                
-                //colocar um ponto diferente
-                let noteView2 = MKAnnotationView(annotation: passengerNote, reuseIdentifier: nil)
-                noteView2.image = UIImage.init(named: "pointer")
                 self.map.addAnnotation(passengerNote)
             }
         }
@@ -277,10 +329,6 @@ class MainTravelerViewController: UIViewController, MKMapViewDelegate, CLLocatio
                     }else{
                         print("Endereço nao encontrado!")
                     }
-             
-                
-                
-
                 }
             }
         }
@@ -297,7 +345,27 @@ class MainTravelerViewController: UIViewController, MKMapViewDelegate, CLLocatio
         self.ubercalled = true
     }
     
+    func swichButtonToInRun(){
+        self.callUberReference.setTitle("Em viagem!", for: .normal)
+        self.callUberReference.backgroundColor = UIColor(red: 0.902, green: 0.906, blue: 0.906, alpha: 1)
+        self.callUberReference.isEnabled = false
+    }
     
-
-    
+    func swichButtonToFinished(price: Double){
+        self.callUberReference.backgroundColor = UIColor(red: 0.902, green: 0.906, blue: 0.906, alpha: 1)
+        self.callUberReference.isEnabled = false
+       
+        
+        //
+        //Formataçao de NUMBERO PRA PREço
+        //
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.locale = Locale(identifier: "pt_BR")
+        //
+        let priceFormatter = numberFormatter.string(from: NSNumber(value: price))
+        //
+        self.callUberReference.setTitle("Viagem Finalizada - \(priceFormatter!) ", for: .normal)
+    }
 }

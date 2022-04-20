@@ -14,26 +14,11 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
     var requestList: [DataSnapshot] = []
     var localManager = CLLocationManager()
     var driverLocation = CLLocationCoordinate2D()
-    var timerManager = Timer()
-    override func viewDidAppear(_ animated: Bool) {
-        self.recoverData()
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { (timer) in
-            self.recoverData()
-            self.timerManager = timer
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        self.timerManager.invalidate()
-    }
-    
-    
+   
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
        
-        
         //Config manager
         localManager.delegate = self
         localManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -45,8 +30,19 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
         let request = database.child("request")
         
         self.requestList = []
-        
-        self.recoverData()
+    
+        //Recover ALLLLL requestS
+        request.observe(.value) { (snapshot) in
+            
+            self.requestList = []
+            
+            if snapshot.value != nil{
+                for son in snapshot.children{
+                    self.requestList.append(son as! DataSnapshot)
+                }
+            }
+            self.tableView.reloadData()
+        }
         
         //recuperar se alguma pedido foi cancelado e nao deixa o motorista aceitar
         request.observe(.childRemoved) { (snapshot) in
@@ -61,22 +57,10 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
             }
             self.tableView.reloadData()
         }
+        
+        
     }
     
-    func recoverData(){
-        
-        let database = Database.database().reference()
-        let request = database.child("request")
-        
-        self.requestList = []
-        
-        //requecupera pedidos uma vez
-        request.observeSingleEvent(of: .childAdded) { (snapshot) in
-            self.requestList.append(snapshot)
-            self.tableView.reloadData()
-        }
-    }
-
 
     // MARK: - Table view data source
 
@@ -117,16 +101,24 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
                         if let userEmail = auth.currentUser?.email{
                             if recoverDriverEmail == userEmail{
                                 driverRequest = "EM ANDAMENTO"
+                                if let status = data["status"] as? String{
+                                    if status == StatusRun.FinishedRun.rawValue{
+                                         driverRequest = "FINALIZADA!"
+                                    }
+                                }
                             }
                         }
                     }
                         
                     if let passengerName = data["name"] as? String{
-                        cell.textLabel?.text = "\(passengerName) | \(driverRequest)"
-                        cell.detailTextLabel?.text = "\(distanceKM) km de distância"
+                        if driverRequest != ""{
+                            cell.textLabel?.text = "\(passengerName) | \(driverRequest)"
+                            cell.detailTextLabel?.text = "\(distanceKM) km de distância"
+                        }else{
+                            cell.textLabel?.text = "\(passengerName)"
+                            cell.detailTextLabel?.text = "\(distanceKM) km de distância"
+                        }
                     }
-                    
-                    
                 }
             }
            
